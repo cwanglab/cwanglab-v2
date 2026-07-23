@@ -1,10 +1,15 @@
 {{ define "main" }}
   <style>
+    /* News: classic single-flow list. One line "5 June 2026 — Title", summary
+       as a plain paragraph below, thin rules between entries. The .news-feed
+       prefix raises specificity so these rules override the legacy two-column
+       .news-item grid in the base stylesheet (which squeezed the title into
+       a 130px column). */
     .news-feed { margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--ink); }
-    .news-item { padding: 14px 0 16px; border-bottom: 1px solid var(--rule); }
-    .news-item__line { margin: 0; font-size: 17px; line-height: 1.6; }
-    .news-item__date { color: var(--muted); }
-    .news-item__summary { margin: 3px 0 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .news-feed .news-item { display: block; padding: 14px 0 16px; border-bottom: 1px solid var(--rule); }
+    .news-feed .news-item__line { max-width: var(--measure); margin: 0; color: var(--ink); font-size: 17px; line-height: 1.6; }
+    .news-feed .news-item__date { color: var(--muted); font-family: var(--sans); font-size: inherit; font-weight: 400; text-transform: none; }
+    .news-feed .news-item__summary { max-width: var(--measure); margin: 3px 0 0; color: var(--muted); font-size: 15px; line-height: 1.6; }
   </style>
 
   <header class="page-head"><div class="shell"><h1>{{ .Title }}</h1><p>{{ .Params.intro }}</p></div></header>
