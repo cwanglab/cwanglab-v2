@@ -1,6 +1,7 @@
 ---
 title: "Terminal intelligence"
-summary: "Efficient, adaptable and real-time intelligence for clinical, robotic and embedded terminals with fixed resource budgets."
+summary: "Scanners, surgical systems and robots run on fixed hardware with strict time budgets. We make large models adapt to specialised clinical and robotic tasks with minimal trainable parameters and latency — for teams deploying AI on real terminals, not just in the cloud."
+description: "Parameter-efficient adaptation and compression that puts large-model capability onto clinical and robotic terminals with fixed resource budgets."
 order: 20
 image: "/images/research/selora-adaptation.png"
 image_alt: "SeLoRA progressively expands low-rank adaptation capacity using a Fisher-information criterion."

@@ -1,20 +1,32 @@
 {{ define "main" }}
   <style>
     /* Homepage-only refinements. Reuses the :root variables from baseof. */
-    .home-hero { padding: 72px 0 60px; }
-    .home-hero__grid { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr); gap: 58px; align-items: center; }
-    .home-hero__copy { min-width: 0; }
-    .home-hero h1 { max-width: none; font-size: 45px; line-height: 1.08; }
-    .home-hero__lead { max-width: 560px; font-size: 21px; line-height: 1.5; }
+    .home-hero { padding: 78px 0 64px; }
+    .home-hero h1 { max-width: 900px; font-size: 52px; line-height: 1.08; }
+    .home-hero__lead { max-width: var(--measure); margin-top: 24px; font-size: 22px; }
+    .hero-facts { display: flex; flex-wrap: wrap; gap: 8px 0; margin: 30px 0 0; padding: 16px 0 0; border-top: 2px solid var(--ink); list-style: none; }
+    .hero-facts li { display: flex; align-items: baseline; margin: 0; color: var(--ink); font-size: 15px; font-weight: 700; }
+    .hero-facts li + li::before { content: "·"; margin: 0 14px; color: var(--claret); font-weight: 700; }
+    .hero-facts strong { color: var(--claret); font-family: var(--serif); font-size: 20px; margin-right: 7px; }
 
-    .hero-showcase { display: grid; grid-template-columns: 1fr; gap: 16px; min-width: 0; }
-    .hero-figure { margin: 0; min-width: 0; overflow: hidden; border: 1px solid var(--rule); border-top: 3px solid var(--claret); border-radius: 3px; background: var(--paper); }
-    .hero-figure__frame { display: flex; align-items: center; justify-content: center; height: 132px; padding: 14px 18px; background: var(--paper); text-decoration: none; }
-    .hero-figure__frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
-    .hero-figure figcaption { padding: 10px 16px 12px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 12px; line-height: 1.5; }
-    .hero-figure figcaption a { display: block; margin-top: 4px; font-weight: 700; }
+    /* Selected results — flagship outcome cards */
+    .results-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 38px; border-top: 2px solid var(--ink); }
+    .result-card { display: flex; flex-direction: column; min-width: 0; padding: 26px 0 28px; border-bottom: 1px solid var(--rule); }
+    .result-card__venue { margin: 0 0 12px; color: var(--claret); font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    .result-card__line { margin: 0 0 16px; font-family: var(--serif); font-size: 20px; line-height: 1.4; }
+    .result-card__fact { margin: auto 0 14px; padding: 12px 14px; border-left: 3px solid var(--claret); background: var(--paper-soft); color: var(--ink); font-size: 14px; font-weight: 700; line-height: 1.5; }
+    .result-card__links { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; font-weight: 700; }
 
     .framework-band { padding: 46px 0 10px; }
+    .framework-item p strong { color: var(--ink); }
+
+    /* Research directions — clean text cards, no paper-strip images */
+    .research-gallery--home { border-top: 2px solid var(--ink); gap: 0 38px; }
+    .research-gallery--home .research-card { border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; background: transparent; }
+    .research-gallery--home .research-card:hover { transform: none; box-shadow: none; }
+    .research-gallery--home .research-card__body { padding: 26px 0 28px; }
+    .research-card__rep { display: block; margin: 0 0 14px; font-size: 13px; line-height: 1.5; }
+    .research-card__rep a { font-weight: 700; }
 
     /* People overview */
     .people-home { border-top: 2px solid var(--ink); }
@@ -41,17 +53,20 @@
 
     @media (max-width: 920px) {
       .home-hero { padding: 56px 0 50px; }
-      .home-hero__grid { grid-template-columns: 1fr; gap: 40px; }
-      .home-hero h1 { font-size: 40px; }
-      .home-hero__lead { max-width: var(--measure); }
-      .hero-showcase { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .home-hero h1 { font-size: 42px; }
+      .home-hero__lead { font-size: 20px; }
+      .results-grid { grid-template-columns: 1fr; gap: 0; }
+      .result-card__fact { margin-top: 0; }
+      .research-gallery--home { gap: 0; }
     }
 
     @media (max-width: 700px) {
       .home-hero { padding: 46px 0 40px; }
-      .home-hero h1 { font-size: 33px; }
-      .home-hero__lead { font-size: 19px; }
-      .hero-showcase { grid-template-columns: 1fr; }
+      .home-hero h1 { font-size: 32px; }
+      .home-hero__lead { font-size: 18px; }
+      .hero-facts { display: block; }
+      .hero-facts li + li { margin-top: 8px; }
+      .hero-facts li + li::before { content: none; margin: 0; }
       .people-home__grid { grid-template-columns: 1fr; }
       .person-card--pi .person-card__avatar { width: 72px; height: 72px; flex-basis: 72px; }
       .person-card--pi .person-card__initials { font-size: 24px; }
@@ -60,42 +75,56 @@
     }
   </style>
 
-  {{ $heroHet := site.GetPage "/research/heterogeneous-learning" }}
-  {{ $heroTerm := site.GetPage "/research/efficient-models" }}
   <section class="home-hero">
-    <div class="shell home-hero__grid">
-      <div class="home-hero__copy">
-        <p class="kicker">Heterogeneous intelligence · Terminal intelligence</p>
-        <h1>{{ site.Data.site.name }}</h1>
-        <p class="home-hero__lead">{{ site.Data.site.mission }}</p>
-        <div class="hero-links">
-          <a href="{{ relURL "/research/" }}">Research directions</a>
-          <a href="{{ relURL "/publications/" }}">Selected publications</a>
-          <a href="mailto:{{ site.Data.site.email }}">Contact the group</a>
-        </div>
+    <div class="shell">
+      <p class="kicker">Medical imaging &amp; robotics AI · {{ site.Data.site.institution }}, Edinburgh</p>
+      <h1>AI for medical imaging and robotics that works across hospitals, devices and datasets.</h1>
+      <p class="home-hero__lead">Models that excel in one setting often fail at the next scanner, hospital or robot. We build learning methods that carry capability across those differences — and onto the clinical and robotic terminals where AI is actually used.</p>
+      <ul class="hero-facts">
+        <li><strong>2 ×</strong> Nature Communications (2025)</li>
+        <li><strong>≈47,000</strong> UK Biobank participants imaged</li>
+        <li><strong>SeLoRA</strong> open-source medical image synthesis</li>
+      </ul>
+      <div class="hero-links">
+        <a href="{{ relURL "/research/" }}">Research directions</a>
+        <a href="{{ relURL "/publications/" }}">Selected publications</a>
+        <a href="mailto:{{ site.Data.site.email }}">Contact the group</a>
       </div>
-      <div class="hero-showcase">
-        {{ with $heroHet }}
-          <figure class="hero-figure">
-            <a class="hero-figure__frame" href="{{ .RelPermalink }}" aria-label="Read about {{ .Title }}">
-              <img src="{{ .Params.image | relURL }}" alt="{{ .Params.image_alt }}" width="990" height="190" loading="lazy">
-            </a>
-            <figcaption>
-              {{ .Params.image_caption }}
-              <a href="{{ .Params.image_source_url }}">{{ .Params.image_source_label }}</a>
-            </figcaption>
-          </figure>
-        {{ end }}
-        {{ with $heroTerm }}
-          <figure class="hero-figure">
-            <a class="hero-figure__frame" href="{{ .RelPermalink }}" aria-label="Read about {{ .Title }}">
-              <img src="{{ .Params.image | relURL }}" alt="{{ .Params.image_alt }}" width="760" height="175" loading="lazy">
-            </a>
-            <figcaption>
-              {{ .Params.image_caption }}
-              <a href="{{ .Params.image_source_url }}">{{ .Params.image_source_label }}</a>
-            </figcaption>
-          </figure>
+    </div>
+  </section>
+
+  {{ $featured := where (where site.RegularPages "Section" "publications") ".Params.featured" true }}
+  {{ $resultMeta := dict
+    "bma-genetics-2025" (dict
+      "line" "A deep-learning pipeline turns UK Biobank MRI into measurements of bone marrow fat — and genome-wide association meta-analyses show these measurements are heritable."
+      "fact" "Bone marrow fat measured in 4 skeletal regions; genetic analysis across ≈47,000 participants")
+    "bma-clinical-2025" (dict
+      "line" "The same measurements, taken through phenome-wide association and Mendelian randomization, reveal which diseases bone marrow fat is connected to."
+      "fact" "Evidence linking marrow adiposity to osteoporosis and fracture risk · open access")
+    "selora-2026" (dict
+      "line" "SeLoRA adapts a large image-synthesis model to a specialised medical task by growing a small adaptor only where it is needed — and the code is open."
+      "fact" "Matched or better image quality with ≈½ the trainable rank of standard LoRA · code on GitHub")
+  }}
+  <section class="section section--soft" aria-labelledby="results-title">
+    <div class="shell">
+      <div class="section-head">
+        <h2 id="results-title">Selected results</h2>
+        <a href="{{ relURL "/publications/" }}">All publications</a>
+      </div>
+      <div class="results-grid">
+        {{ range first 3 $featured.ByDate }}
+          {{ $meta := index $resultMeta .File.BaseFileName }}
+          <article class="result-card">
+            <p class="result-card__venue">{{ .Params.venue }} · {{ .Params.year }}</p>
+            <p class="result-card__line">{{ $meta.line }}</p>
+            <p class="result-card__fact">{{ $meta.fact }}</p>
+            <div class="result-card__links">
+              <a href="{{ .RelPermalink }}">Details</a>
+              {{ with .Params.doi }}<a href="{{ . }}">DOI</a>{{ end }}
+              {{ with .Params.oa_url }}<a href="{{ . }}">Open access</a>{{ end }}
+              {{ with .Params.code }}<a href="{{ . }}">Code</a>{{ end }}
+            </div>
+          </article>
         {{ end }}
       </div>
     </div>
@@ -111,23 +140,29 @@
         <article class="framework-item">
           <span class="framework-item__label">Cloud</span>
           <h3>Population and foundation models</h3>
-          <p>Population-scale imaging, cross-domain synthesis and representation learning in large computing environments.</p>
+          <p><strong>Hospitals and biobanks hold imaging data at population scale.</strong> We build large-scale measurement, synthesis and representation-learning methods there — for example, the UK Biobank bone marrow imaging pipeline behind our Nature Communications studies.</p>
         </article>
         <article class="framework-item">
           <span class="framework-item__label">Edge</span>
           <h3>Heterogeneous collaboration</h3>
-          <p>Federated learning and knowledge transfer across institutions, architectures and devices without assuming uniform infrastructure.</p>
+          <p><strong>Hospitals and partners cannot always pool data or run identical hardware.</strong> Federated learning and knowledge transfer let models learn across institutions, architectures and devices while source data stays under local governance.</p>
         </article>
         <article class="framework-item">
           <span class="framework-item__label">Terminal</span>
           <h3>Intelligence at the point of use</h3>
-          <p>Efficient adaptation and real-time inference for clinical, robotic and embedded terminals with fixed resource budgets.</p>
+          <p><strong>Scanners, surgical systems and robots run on fixed hardware with strict time budgets.</strong> Efficient adaptation and compression put large-model capability onto the clinical and robotic terminals where it is used.</p>
         </article>
       </div>
     </div>
   </section>
 
   {{ $research := where site.RegularPages "Section" "research" }}
+  {{ $repWork := dict
+    "heterogeneous-learning" (dict "label" "DiCyc — deformation-invariant cross-domain fusion, Information Fusion 2021" "url" "/publications/dicyc-2021/")
+    "efficient-models" (dict "label" "SeLoRA — self-expanding LoRA, Expert Systems with Applications 2026" "url" "/publications/selora-2026/")
+    "medical-imaging" (dict "label" "Bone marrow adiposity in UK Biobank, Nature Communications 2025" "url" "/publications/bma-genetics-2025/")
+    "intelligent-systems" (dict "label" "Image-guided path planning for coronary intervention, Computers in Biology and Medicine 2023" "url" "/publications/pci-path-planning-2023/")
+  }}
   <section class="section">
     <div class="shell">
       <div class="section-head">
@@ -136,15 +171,14 @@
       </div>
       <div class="research-gallery research-gallery--home">
         {{ range $index, $page := $research.ByParam "order" }}
-          {{ $thumbnail := $page.Params.thumbnail | default $page.Params.image }}
           <article class="research-card">
-            <a class="research-card__visual" href="{{ $page.RelPermalink }}" aria-label="Read about {{ $page.Title }}">
-              <img src="{{ $thumbnail | relURL }}" alt="{{ $page.Params.image_alt }}" loading="lazy">
-            </a>
             <div class="research-card__body">
               <span class="research-card__number">0{{ add $index 1 }}</span>
               <h3><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h3>
               <p>{{ $page.Params.summary }}</p>
+              {{ with index $repWork $page.File.BaseFileName }}
+                <span class="research-card__rep">Representative: <a href="{{ .url | relURL }}">{{ .label }}</a></span>
+              {{ end }}
               <a class="research-card__link" href="{{ $page.RelPermalink }}">Explore this direction</a>
             </div>
           </article>

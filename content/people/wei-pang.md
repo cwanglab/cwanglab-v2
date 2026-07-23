@@ -4,7 +4,7 @@ category: "academic-collaborator"
 position: "Professor"
 affiliation: "Heriot-Watt University"
 order: 30
-photo: "/avatars/faculty2.svg"
+photo: ""
 ---
 
 Academic collaborator in bio-inspired computing, graph neural networks and explainable artificial intelligence.

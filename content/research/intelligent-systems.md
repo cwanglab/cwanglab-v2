@@ -1,6 +1,7 @@
 ---
 title: "Heterogeneous robotic systems"
-summary: "Perception, learning and decision-making across robots, sensors and agents with different capabilities and operating conditions."
+summary: "Robots with different sensors, bodies and capabilities must still perceive, decide and act together. We study perception, planning and coordination for these heterogeneous systems — from soft robots that sense their own shape to image-guided intervention."
+description: "Perception, planning and coordination for robots with different sensors, morphologies and capabilities, including soft robots and image-guided intervention."
 order: 40
 image: "/images/research/soft-robot-sensorimotor.png"
 image_alt: "Bio-inspired tactile and morphological sensing pipeline for autonomous soft robotic fish and crawler systems."

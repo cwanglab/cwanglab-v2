@@ -7,7 +7,7 @@ order: 10
 email: "Chengjia.Wang@hw.ac.uk"
 scholar: "https://scholar.google.com/citations?user=lwV4KfwAAAAJ"
 website: "https://hintelligence.online"
-photo: "/avatars/pi.svg"
+photo: ""
 ---
 
 Chengjia Wang is a Bicentennial Research Leader at Heriot-Watt University and Programme Director of the BEng in Robotics. He is also an Honorary Research Fellow at the University of Edinburgh BHF Centre for Cardiovascular Science.

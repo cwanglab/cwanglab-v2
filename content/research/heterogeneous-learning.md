@@ -1,6 +1,7 @@
 ---
 title: "Heterogeneous intelligence"
-summary: "Learning and collaboration across different data distributions, institutions, model architectures and computing resources."
+summary: "Hospitals and research partners often cannot pool data or run identical hardware. We build federated learning and knowledge-distillation methods that let AI models learn across institutions, model architectures and devices — for clinical networks that must keep source data under local governance."
+description: "Federated learning and knowledge transfer across institutions, model architectures and devices, without moving source data."
 order: 10
 image: "/images/research/federated-heterogeneous-distillation.png"
 image_alt: "Cloud-to-fog and fog-to-cloud knowledge distillation between heterogeneous neural networks."

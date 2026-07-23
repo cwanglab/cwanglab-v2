@@ -1,6 +1,7 @@
 ---
 title: "Trustworthy medical AI"
-summary: "Medical imaging methods evaluated across modalities, centres and clinical constraints, from population analysis to point-of-care use."
+summary: "A model that works on one scanner can fail on the next. We build medical imaging methods that stay reliable across scanners, hospitals and patient groups — for clinicians and population researchers who need measurements they can trust, from UK Biobank-scale studies to point-of-care use."
+description: "Trustworthy medical imaging AI that stays reliable across scanners, hospitals and patient groups, from population-scale MRI studies to point-of-care use."
 order: 30
 image: "/images/research/bone-marrow-study-design.png"
 thumbnail: "/images/research/bone-marrow-measurement.png"
