@@ -1,0 +1,52 @@
+baseURL = 'https://cwanglab.github.io/cwanglab-v2/'
+languageCode = 'en-gb'
+title = 'Heterogeneous & Terminal Intelligence Lab'
+enableRobotsTXT = true
+canonifyURLs = true
+
+[params]
+  description = 'Heterogeneous and terminal intelligence across cloud, edge and point-of-use systems, with applications in trustworthy medical AI and robotics.'
+  author = 'Heterogeneous & Terminal Intelligence Lab'
+
+[menu]
+  [[menu.main]]
+    name = 'About'
+    url = '/about/'
+    weight = 5
+  [[menu.main]]
+    name = 'Research'
+    url = '/research/'
+    weight = 10
+  [[menu.main]]
+    name = 'People'
+    url = '/people/'
+    weight = 20
+  [[menu.main]]
+    name = 'Publications'
+    url = '/publications/'
+    weight = 30
+  [[menu.main]]
+    name = 'Projects & Code'
+    url = '/projects/'
+    weight = 40
+  [[menu.main]]
+    name = 'News'
+    url = '/news/'
+    weight = 50
+  [[menu.main]]
+    name = 'Join'
+    url = '/opportunities/'
+    weight = 60
+
+[outputs]
+  home = ['HTML', 'RSS']
+  section = ['HTML', 'RSS']
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+
+[sitemap]
+  changefreq = 'monthly'
+  priority = 0.5

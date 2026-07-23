@@ -1,0 +1,60 @@
+{{/* publication-single.html — shared single-page markup for publications.
+     Called by layouts/publications/single.html and by the type-override shims
+     layouts/journal/single.html and layouts/review/single.html (content files
+     set `type: journal|review`, which reroutes Hugo's layout lookup). */}}
+  <style>
+    .pub-single__head { border-bottom: 1px solid var(--rule); }
+    .pub-single__badge {
+      display: inline-block; margin-bottom: 14px; padding: 2px 10px;
+      border-radius: 999px; background: var(--claret); color: #fff;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .pub-single__meta { margin: 18px 0 0; }
+    .pub-single__authors { margin: 0 0 6px; color: var(--ink); font-size: 17px; line-height: 1.55; }
+    .pub-single__venue { margin: 0; color: var(--muted); font-size: 15px; font-style: italic; }
+    .pub-single .chips { margin-top: 22px; }
+    /* Chip styles for partials/output-links.html (shared with projects templates). */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 12px;
+      border: 1px solid var(--rule); border-radius: 999px;
+      background: var(--paper);
+      color: var(--claret);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      line-height: 1.6; text-decoration: none; white-space: nowrap;
+      transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+    }
+    .chip svg { width: 12px; height: 12px; flex: 0 0 12px; }
+    .chip:hover { border-color: var(--claret); background: var(--claret); color: #fff; }
+    .chip:hover svg { stroke: #fff; }
+    .chip:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) { .chip { transition: none; } }
+    .pub-single__facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 0 0 36px; padding: 20px 0; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); }
+    .pub-single__facts div { min-width: 0; }
+    .pub-single__facts dt { color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; }
+    .pub-single__facts dd { margin: 5px 0 0; font-size: 15px; overflow-wrap: anywhere; }
+    @media (max-width: 700px) { .pub-single__facts { grid-template-columns: 1fr; } }
+  </style>
+
+  <div class="pub-single">
+    <header class="page-head pub-single__head"><div class="shell">
+      {{ if .Params.featured }}<span class="pub-single__badge">Featured publication</span>{{ end }}
+      <p class="kicker">{{ .Params.type | default "Publication" | humanize }} · {{ .Date.Format "2006" }}</p>
+      <h1>{{ .Title }}</h1>
+      <div class="pub-single__meta">
+        {{ with .Params.authors }}<p class="pub-single__authors">{{ . }}</p>{{ end }}
+        {{ with .Params.venue }}<p class="pub-single__venue">{{ . }}</p>{{ end }}
+      </div>
+      {{ partial "output-links.html" . }}
+    </div></header>
+    <section class="section"><div class="shell">
+      <dl class="pub-single__facts">
+        {{ with .Params.venue }}<div><dt>Venue</dt><dd>{{ . }}</dd></div>{{ end }}
+        {{ with .Params.year }}<div><dt>Year</dt><dd>{{ . }}</dd></div>{{ end }}
+        {{ with .Params.type }}<div><dt>Type</dt><dd>{{ . | humanize }}</dd></div>{{ end }}
+      </dl>
+      {{ with .Content }}<article class="content">{{ . }}</article>{{ end }}
+      <div class="hero-links"><a href="{{ relURL "/publications/" }}">All publications</a></div>
+    </div></section>
+  </div>

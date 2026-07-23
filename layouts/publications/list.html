@@ -1,0 +1,75 @@
+{{ define "main" }}
+  <style>
+    .pub-year { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 40px; padding: 34px 0 6px; border-top: 2px solid var(--ink); }
+    .pub-year + .pub-year { margin-top: 30px; }
+    .pub-year__label { position: sticky; top: 24px; align-self: start; }
+    .pub-year__label h2 { margin: 0; font-family: var(--serif); font-size: 34px; line-height: 1.1; color: var(--ink); }
+    .pub-year__count { display: block; margin-top: 6px; color: var(--muted); font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+    .pub-list { margin: 0; padding: 0; list-style: none; counter-reset: pub; }
+    .pub { position: relative; padding: 0 0 26px 34px; margin-bottom: 26px; border-bottom: 1px solid var(--rule); counter-increment: pub; }
+    .pub:last-child { margin-bottom: 0; }
+    .pub::before {
+      content: counter(pub, decimal-leading-zero);
+      position: absolute; left: 0; top: 4px;
+      color: var(--claret); font-family: var(--mono); font-size: 12px; font-weight: 700;
+    }
+    .pub__title { margin: 0 0 6px; font-family: var(--serif); font-size: 19px; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere; }
+    .pub__title a { color: var(--ink); text-decoration: none; }
+    .pub__title a:hover { color: var(--claret); }
+    .pub__badge {
+      display: inline-block; margin-left: 8px; padding: 1px 8px; vertical-align: 2px;
+      border-radius: 999px; background: var(--claret); color: #fff;
+      font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .pub__authors, .pub__venue { margin: 0 0 4px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .pub__venue { color: var(--ink); font-style: italic; }
+    .pub .chips { margin-top: 10px; }
+    /* Chip styles for partials/output-links.html (shared with projects templates). */
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 12px;
+      border: 1px solid var(--rule); border-radius: 999px;
+      background: var(--paper);
+      color: var(--claret);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+      line-height: 1.6; text-decoration: none; white-space: nowrap;
+      transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+    }
+    .chip svg { width: 12px; height: 12px; flex: 0 0 12px; }
+    .chip:hover { border-color: var(--claret); background: var(--claret); color: #fff; }
+    .chip:hover svg { stroke: #fff; }
+    .chip:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) { .chip { transition: none; } }
+    @media (max-width: 700px) {
+      .pub-year { grid-template-columns: 1fr; gap: 16px; padding-top: 26px; }
+      .pub-year__label { position: static; display: flex; align-items: baseline; gap: 12px; }
+      .pub-year__label h2 { font-size: 27px; }
+      .pub-year__count { margin-top: 0; }
+      .pub { padding-left: 0; }
+      .pub::before { position: static; display: block; margin-bottom: 3px; }
+    }
+  </style>
+
+  <header class="page-head"><div class="shell"><h1>{{ .Title }}</h1><p>{{ .Params.intro }} <a href="{{ site.Data.site.scholar }}">View the complete record on Google Scholar.</a></p></div></header>
+  <section class="section"><div class="shell">
+    {{ range .RegularPages.GroupByDate "2006" "desc" }}
+      <section class="pub-year">
+        <div class="pub-year__label">
+          <h2>{{ .Key }}</h2>
+          <span class="pub-year__count">{{ len .Pages }} {{ if eq (len .Pages) 1 }}paper{{ else }}papers{{ end }}</span>
+        </div>
+        <ol class="pub-list">
+          {{ range .Pages.ByTitle }}
+            <li class="pub">
+              <p class="pub__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if .Params.featured }}<span class="pub__badge">Featured</span>{{ end }}</p>
+              <p class="pub__authors">{{ .Params.authors }}</p>
+              <p class="pub__venue">{{ .Params.venue }}</p>
+              {{ partial "output-links.html" . }}
+            </li>
+          {{ end }}
+        </ol>
+      </section>
+    {{ end }}
+  </div></section>
+{{ end }}
