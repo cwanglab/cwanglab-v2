@@ -4,38 +4,10 @@
     .project-detail__meta div { min-width: 0; }
     .project-detail__meta dt { color: var(--muted); font-size: 12px; font-weight: 700; text-transform: uppercase; }
     .project-detail__meta dd { margin: 5px 0 0; font-size: 15px; overflow-wrap: anywhere; }
-    .project-detail__meta .chips { margin-top: 2px; }
-    .status-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 2px 10px; border: 1px solid var(--rule); border-radius: 999px;
-      color: var(--muted); background: var(--paper-soft);
-      font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap;
-    }
-    .status-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--muted); }
-    .status-badge--ongoing, .status-badge--active { border-color: var(--claret); color: var(--claret); background: var(--paper); }
-    .status-badge--ongoing::before, .status-badge--active::before { background: var(--claret); }
-    /* Chip styles for partials/output-links.html (shared with publications templates). */
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .chip {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 4px 12px;
-      border: 1px solid var(--rule); border-radius: 999px;
-      background: var(--paper);
-      color: var(--claret);
-      font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-      line-height: 1.6; text-decoration: none; white-space: nowrap;
-      transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
-    }
-    .chip svg { width: 12px; height: 12px; flex: 0 0 12px; }
-    .chip:hover { border-color: var(--claret); background: var(--claret); color: #fff; }
-    .chip:hover svg { stroke: #fff; }
-    .chip:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-    @media (prefers-reduced-motion: reduce) { .chip { transition: none; } }
+    .project-detail__meta .output-links { margin: 0; font-size: 15px; }
     @media (max-width: 700px) { .project-detail__meta { grid-template-columns: 1fr; } }
   </style>
 
-  {{ $status := .Params.status | default "" }}
-  {{ $statusSlug := $status | urlize }}
   <header class="page-head"><div class="shell">
     <p class="kicker">{{ .Params.research_area }}</p>
     <h1>{{ .Title }}</h1>
@@ -43,7 +15,7 @@
   </div></header>
   <section class="section"><div class="shell">
     <dl class="project-detail__meta">
-      <div><dt>Status</dt><dd>{{ with $status }}<span class="status-badge{{ with $statusSlug }} status-badge--{{ . }}{{ end }}">{{ $status }}</span>{{ else }}—{{ end }}</dd></div>
+      <div><dt>Status</dt><dd>{{ .Params.status | default "—" }}</dd></div>
       <div><dt>Period</dt><dd>{{ .Params.period | default "—" }}</dd></div>
       <div><dt>Outputs</dt><dd>{{ partial "output-links.html" . }}</dd></div>
     </dl>
