@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img" aria-label="Coordination of heterogeneous robotic systems diagram">
+  <rect x="0" y="0" width="480" height="360" fill="#ffffff"/>
+
+  <!-- Links from nodes to coordination hub -->
+  <line x1="112" y1="98" x2="170" y2="146" stroke="#5f6368" stroke-width="1.5"/>
+  <line x1="368" y1="98" x2="310" y2="146" stroke="#5f6368" stroke-width="1.5"/>
+  <line x1="104" y1="266" x2="172" y2="216" stroke="#5f6368" stroke-width="1.5"/>
+  <line x1="376" y1="266" x2="308" y2="216" stroke="#5f6368" stroke-width="1.5"/>
+
+  <!-- Central coordination hub -->
+  <g>
+    <rect x="152" y="146" width="176" height="70" rx="6" fill="#f7f7f5" stroke="#7a1732" stroke-width="1.5"/>
+    <text x="240" y="176" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#7a1732">Coordination</text>
+    <text x="240" y="198" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-style="italic" fill="#5f6368">across heterogeneous robots</text>
+  </g>
+
+  <!-- Aerial robot: circle -->
+  <g>
+    <circle cx="95" cy="76" r="24" fill="#ffffff" stroke="#5f6368" stroke-width="1.5"/>
+    <circle cx="95" cy="76" r="7" fill="none" stroke="#7a1732" stroke-width="1.4"/>
+    <text x="95" y="120" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#3c4043">aerial robot</text>
+  </g>
+
+  <!-- Ground robot: square -->
+  <g>
+    <rect x="361" y="52" width="48" height="48" fill="#ffffff" stroke="#5f6368" stroke-width="1.5"/>
+    <circle cx="385" cy="76" r="7" fill="none" stroke="#7a1732" stroke-width="1.4"/>
+    <text x="385" y="120" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#3c4043">ground robot</text>
+  </g>
+
+  <!-- Sensor node: triangle -->
+  <g>
+    <path d="M85 252 L57 302 L113 302 Z" fill="#ffffff" stroke="#5f6368" stroke-width="1.5" stroke-linejoin="round"/>
+    <circle cx="85" cy="286" r="6" fill="none" stroke="#7a1732" stroke-width="1.4"/>
+    <text x="85" y="322" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#3c4043">sensor node</text>
+  </g>
+
+  <!-- Manipulator: hexagon -->
+  <g>
+    <path d="M377 252 L413 252 L431 277 L413 302 L377 302 L359 277 Z" fill="#ffffff" stroke="#5f6368" stroke-width="1.5" stroke-linejoin="round"/>
+    <circle cx="395" cy="277" r="6" fill="none" stroke="#7a1732" stroke-width="1.4"/>
+    <text x="395" y="322" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#3c4043">manipulator</text>
+  </g>
+</svg>

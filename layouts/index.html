@@ -15,6 +15,17 @@
     .home-section li > p { margin: 2px 0 0; }
     .home-more { max-width: var(--measure); margin: 4px 0 20px; font-size: 15px; }
 
+    /* Research framework diagram: full-width within the measure, max 960px. */
+    .framework-figure { max-width: 960px; margin: 0 0 18px; }
+    .framework-figure img { display: block; width: 100%; height: auto; }
+    .framework-figure figcaption { margin-top: 6px; font-size: 14px; color: var(--muted); }
+
+    /* Research directions: text-led list rows with a small right-side diagram.
+       No cards, borders or background — flex only. */
+    .dir-item { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+    .dir-item .dir-text { flex: 1 1 auto; }
+    .dir-item .dir-thumb { flex: 0 0 200px; width: 200px; height: auto; display: block; margin-top: 2px; }
+
     .people-pi { max-width: var(--measure); margin: 0 0 14px; }
     .pub-entry .pub-venue { font-style: italic; }
     .news-date { color: var(--muted); font-size: 15px; white-space: nowrap; }
@@ -23,6 +34,8 @@
       .home-intro { padding-top: 34px; }
       .home-intro p { font-size: 17px; }
       .home-section h2 { font-size: 23px; }
+      .dir-item { display: block; }
+      .dir-item .dir-thumb { width: 200px; margin: 10px 0 0; }
     }
   </style>
 
@@ -38,6 +51,10 @@
   <section class="home-section" aria-labelledby="framework-title">
     <div class="shell">
       <h2 id="framework-title">Research framework</h2>
+      <figure class="framework-figure">
+        <img src="{{ relURL "/images/diagrams/framework.svg" }}" alt="Cloud–Edge–Terminal research framework diagram" width="1200" height="420" loading="lazy">
+        <figcaption>Cloud–Edge–Terminal research framework.</figcaption>
+      </figure>
       <ul>
         <li><strong>Cloud — population and foundation models.</strong> Hospitals and biobanks hold imaging data at population scale; we build large-scale measurement, synthesis and representation-learning methods there, for example the UK Biobank bone marrow imaging pipeline behind our Nature Communications studies.</li>
         <li><strong>Edge — heterogeneous collaboration.</strong> Hospitals and partners cannot always pool data or run identical hardware; federated learning and knowledge transfer let models learn across institutions, architectures and devices while source data stays under local governance.</li>
@@ -53,16 +70,30 @@
     "medical-imaging" (dict "label" "Bone marrow adiposity in UK Biobank, Nature Communications 2025" "url" "/publications/bma-genetics-2025/")
     "intelligent-systems" (dict "label" "Image-guided path planning for coronary intervention, Computers in Biology and Medicine 2023" "url" "/publications/pci-path-planning-2023/")
   }}
+  {{ $dirFig := dict
+    "heterogeneous-learning" (dict "src" "/images/diagrams/dir-heterogeneous.svg" "alt" "Diagram: heterogeneous intelligence across institutions, architectures and devices")
+    "efficient-models" (dict "src" "/images/diagrams/dir-terminal.svg" "alt" "Diagram: terminal intelligence on scanners, surgical systems and robots")
+    "medical-imaging" (dict "src" "/images/diagrams/dir-medical-ai.svg" "alt" "Diagram: trustworthy medical AI")
+    "intelligent-systems" (dict "src" "/images/diagrams/dir-robotics.svg" "alt" "Diagram: heterogeneous robotic systems")
+  }}
   <section class="home-section" aria-labelledby="directions-title">
     <div class="shell">
       <h2 id="directions-title">Research directions</h2>
       <ul>
         {{ range $research.ByParam "order" }}
+          {{ $page := . }}
           <li>
-            <a href="{{ .RelPermalink }}"><strong>{{ .Title }}</strong></a> — {{ .Params.summary }}
-            {{ with index $repWork .File.BaseFileName }}
-              Representative work: <a href="{{ .url | relURL }}">{{ .label }}</a>.
-            {{ end }}
+            <div class="dir-item">
+              <div class="dir-text">
+                <a href="{{ .RelPermalink }}"><strong>{{ .Title }}</strong></a> — {{ .Params.summary }}
+                {{ with index $repWork .File.BaseFileName }}
+                  Representative work: <a href="{{ .url | relURL }}">{{ .label }}</a>.
+                {{ end }}
+              </div>
+              {{ with index $dirFig $page.File.BaseFileName }}
+                <img class="dir-thumb" src="{{ .src | relURL }}" alt="{{ .alt }}" width="480" height="360" loading="lazy">
+              {{ end }}
+            </div>
           </li>
         {{ end }}
       </ul>

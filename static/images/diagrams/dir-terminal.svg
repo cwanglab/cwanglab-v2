@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img" aria-label="Foundation model to terminal devices diagram">
+  <defs>
+    <marker id="term-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#7a1732"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="480" height="360" fill="#ffffff"/>
+
+  <!-- Foundation model box -->
+  <g>
+    <rect x="35" y="122" width="150" height="116" fill="#f7f7f5" stroke="#7a1732" stroke-width="1.5"/>
+    <text x="110" y="172" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#7a1732">Foundation</text>
+    <text x="110" y="194" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="17" fill="#7a1732">model</text>
+    <text x="110" y="218" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-style="italic" fill="#5f6368">large-scale pretraining</text>
+  </g>
+
+  <!-- Arrows: model -> devices via adaptation/compression -->
+  <path d="M185 180 H290" stroke="#7a1732" stroke-width="2" fill="none"/>
+  <path d="M290 180 L290 118 H318" stroke="#7a1732" stroke-width="2" fill="none" marker-end="url(#term-arrow)"/>
+  <path d="M290 180 L290 250 H318" stroke="#7a1732" stroke-width="2" fill="none" marker-end="url(#term-arrow)"/>
+  <text x="237" y="164" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-style="italic" fill="#5f6368">adaptation ·</text>
+  <text x="237" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-style="italic" fill="#5f6368">compression</text>
+
+  <!-- Scanner device -->
+  <g>
+    <rect x="330" y="72" width="118" height="88" rx="10" fill="#ffffff" stroke="#5f6368" stroke-width="1.5"/>
+    <circle cx="389" cy="116" r="26" fill="none" stroke="#7a1732" stroke-width="1.8"/>
+    <circle cx="389" cy="116" r="14" fill="none" stroke="#d8d9da" stroke-width="1.2"/>
+    <line x1="352" y1="150" x2="426" y2="150" stroke="#5f6368" stroke-width="1.5"/>
+    <text x="389" y="180" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#3c4043">scanner</text>
+  </g>
+
+  <!-- Robot device -->
+  <g>
+    <rect x="344" y="228" width="66" height="46" rx="6" fill="#ffffff" stroke="#5f6368" stroke-width="1.5"/>
+    <circle cx="377" cy="244" r="5" fill="none" stroke="#7a1732" stroke-width="1.5"/>
+    <polyline points="410,244 436,228 452,244" fill="none" stroke="#5f6368" stroke-width="1.8" stroke-linejoin="round"/>
+    <circle cx="436" cy="228" r="3.5" fill="none" stroke="#5f6368" stroke-width="1.5"/>
+    <circle cx="452" cy="244" r="3" fill="none" stroke="#7a1732" stroke-width="1.5"/>
+    <line x1="338" y1="284" x2="416" y2="284" stroke="#5f6368" stroke-width="1.8"/>
+    <text x="389" y="306" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#3c4043">robot</text>
+  </g>
+</svg>

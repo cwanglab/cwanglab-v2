@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360" role="img" aria-label="Whole-body MRI analysis pipeline diagram">
+  <defs>
+    <marker id="med-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#7a1732"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="480" height="360" fill="#ffffff"/>
+
+  <!-- Step 1: Whole-body MRI -->
+  <g>
+    <text x="90" y="92" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="14" fill="#7a1732">1</text>
+    <rect x="25" y="108" width="130" height="118" fill="#ffffff" stroke="#5f6368" stroke-width="1.2"/>
+    <rect x="68" y="126" width="44" height="32" rx="4" fill="none" stroke="#7a1732" stroke-width="1.6"/>
+    <circle cx="90" cy="142" r="8" fill="none" stroke="#7a1732" stroke-width="1.4"/>
+    <text x="90" y="188" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#3c4043">Whole-body</text>
+    <text x="90" y="206" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#3c4043">MRI</text>
+  </g>
+
+  <!-- Step 2: automated measurement -->
+  <g>
+    <text x="240" y="92" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="14" fill="#7a1732">2</text>
+    <rect x="175" y="108" width="130" height="118" fill="#ffffff" stroke="#5f6368" stroke-width="1.2"/>
+    <line x1="208" y1="158" x2="272" y2="158" stroke="#d8d9da" stroke-width="1.2"/>
+    <line x1="216" y1="158" x2="216" y2="138" stroke="#7a1732" stroke-width="2.4"/>
+    <line x1="232" y1="158" x2="232" y2="128" stroke="#7a1732" stroke-width="2.4"/>
+    <line x1="248" y1="158" x2="248" y2="144" stroke="#7a1732" stroke-width="2.4"/>
+    <line x1="264" y1="158" x2="264" y2="122" stroke="#7a1732" stroke-width="2.4"/>
+    <text x="240" y="188" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#3c4043">automated</text>
+    <text x="240" y="206" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#3c4043">measurement</text>
+  </g>
+
+  <!-- Step 3: clinical and genetic insights -->
+  <g>
+    <text x="390" y="92" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="14" fill="#7a1732">3</text>
+    <rect x="325" y="108" width="130" height="118" fill="#ffffff" stroke="#5f6368" stroke-width="1.2"/>
+    <circle cx="372" cy="136" r="5" fill="none" stroke="#7a1732" stroke-width="1.5"/>
+    <circle cx="408" cy="136" r="5" fill="none" stroke="#7a1732" stroke-width="1.5"/>
+    <circle cx="390" cy="158" r="5" fill="none" stroke="#7a1732" stroke-width="1.5"/>
+    <line x1="377" y1="138" x2="403" y2="138" stroke="#5f6368" stroke-width="1.2"/>
+    <line x1="375" y1="140" x2="387" y2="154" stroke="#5f6368" stroke-width="1.2"/>
+    <line x1="405" y1="140" x2="393" y2="154" stroke="#5f6368" stroke-width="1.2"/>
+    <text x="390" y="188" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#3c4043">clinical and</text>
+    <text x="390" y="206" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" fill="#3c4043">genetic insights</text>
+  </g>
+
+  <!-- Flow arrows -->
+  <line x1="157" y1="167" x2="173" y2="167" stroke="#7a1732" stroke-width="2" marker-end="url(#med-arrow)"/>
+  <line x1="307" y1="167" x2="323" y2="167" stroke="#7a1732" stroke-width="2" marker-end="url(#med-arrow)"/>
+
+  <!-- Caption -->
+  <text x="240" y="272" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-style="italic" fill="#5f6368">population-scale imaging analysis</text>
+</svg>
