@@ -5,6 +5,9 @@ enableRobotsTXT = true
 canonifyURLs = true
 
 [params]
+  # Preview deployment: emits noindex and a footer notice. The production site is the
+  # cwanglab.github.io repository, served at the domain root, which does not set this.
+  preview = true
   description = 'Heterogeneous and terminal intelligence across cloud, edge and point-of-use systems, with applications in trustworthy medical AI and robotics.'
   author = 'Heterogeneous & Terminal Intelligence Lab'
 
