@@ -1,7 +1,7 @@
 ---
 title: "Hongbo Li"
 category: "alumni"
-_build:
+build:
   render: never
   list: local
 position: "BEng Robotics, 2023–2024"

@@ -1,7 +1,7 @@
 ---
 title: "Mariya Sebastian"
 category: "alumni"
-_build:
+build:
   render: never
   list: local
 position: "MSc Data Science, 2023–2024"

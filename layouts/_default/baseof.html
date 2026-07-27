@@ -3,7 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {{ $description := .Description | default .Params.intro | default .Site.Params.description }}
+  {{/* Per-page description: explicit → section intro → derived from the page's own
+       fields → summary → site default. Avoids 30+ pages sharing one description. */}}
+  {{ $derived := "" }}
+  {{ if eq .Section "publications" }}
+    {{ $derived = printf "%s. %s%s, %v." .Title (cond (ne (string .Params.authors) "") (printf "%s. " .Params.authors) "") .Params.venue .Params.year }}
+  {{ else if eq .Section "people" }}
+    {{ $derived = printf "%s — %s, %s, Heterogeneous & Terminal Intelligence Lab." .Title .Params.position .Params.affiliation }}
+  {{ else if eq .Section "projects" }}
+    {{ $derived = .Params.summary }}
+  {{ else if eq .Section "research" }}
+    {{ $derived = .Params.summary }}
+  {{ end }}
+  {{ $description := .Description | default .Params.intro | default $derived | default (.Summary | plainify | truncate 155) | default .Site.Params.description }}
   {{ $pageTitle := cond .IsHome .Site.Title (printf "%s | %s" .Title .Site.Title) }}
   <meta name="description" content="{{ $description }}">
   <meta name="author" content="{{ .Site.Params.author }}">
@@ -74,7 +86,8 @@
     .site-nav ul { display: flex; align-items: center; gap: 25px; margin: 0; padding: 0; list-style: none; }
     .site-nav a { color: var(--ink); font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap; }
     .site-nav a:hover, .site-nav a[aria-current='page'] { color: var(--claret); }
-    .mobile-nav { display: none; }
+    .mobile-nav-wrap { display: none; }
+    .mobile-nav { position: relative; }
 
     main { min-height: 60vh; }
     .home-hero { padding: 78px 0 64px; border-bottom: 1px solid var(--rule); }
@@ -199,11 +212,11 @@
     /* 1000px, not 920px: the seven-item nav clips between roughly 920 and 1000. */
     @media (max-width: 1000px) {
       .site-nav { display: none; }
-      .mobile-nav { display: block; position: relative; }
+      .mobile-nav-wrap { display: block; }
       .mobile-nav summary { cursor: pointer; color: var(--ink); font-size: 14px; font-weight: 700; list-style: none; }
       .mobile-nav summary::-webkit-details-marker { display: none; }
-      .mobile-nav summary::before { content: 'Menu'; }
-      .mobile-nav[open] summary::before { content: 'Close'; }
+      .mobile-nav[open] .mobile-nav__label { visibility: hidden; }
+      .mobile-nav[open] summary::after { content: 'Close'; }
       .mobile-nav ul { position: absolute; right: 0; z-index: 10; width: 230px; margin: 14px 0 0; padding: 8px 18px; border: 1px solid var(--rule); background: var(--paper); list-style: none; box-shadow: 0 8px 20px rgba(0,0,0,0.09); }
       .mobile-nav li + li { border-top: 1px solid var(--rule); }
       .mobile-nav a { display: block; padding: 10px 0; color: var(--ink); font-size: 14px; font-weight: 700; text-decoration: none; }
@@ -297,14 +310,17 @@
           {{ end }}
         </ul>
       </nav>
+      {{/* Below 1000px the desktop nav is hidden, so this carries the navigation landmark. */}}
+      <nav class="mobile-nav-wrap" aria-label="Primary navigation">
       <details class="mobile-nav">
-        <summary aria-label="Toggle navigation"></summary>
+        <summary><span class="mobile-nav__label">Menu</span></summary>
         <ul>
           {{ range site.Menus.main }}
             <li><a href="{{ .URL | relURL }}"{{ if hasPrefix $.RelPermalink .URL }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
           {{ end }}
         </ul>
       </details>
+      </nav>
     </div>
   </header>
 

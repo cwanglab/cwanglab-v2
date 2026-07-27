@@ -1,7 +1,7 @@
 ---
 title: "Aman Valera"
 category: "alumni"
-_build:
+build:
   render: never
   list: local
 position: "MSc, 2023–2024"

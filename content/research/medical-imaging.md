@@ -9,7 +9,7 @@ diagram_caption: "Schematic. This direction at a glance: imaging measurements th
 image: "/images/research/bone-marrow-measurement.png"
 image_size: "wide"
 image_alt: "Deep-learning measurement of bone marrow fat fraction in four skeletal regions of UK Biobank MRI, across two participant batches."
-image_caption: "Deep-learning segmentation of spine, femoral head, total hip and femoral diaphysis in UK Biobank MRI, applied to two imaging batches comprising 50,226 participants."
+image_caption: "Deep-learning segmentation of spine, femoral head, total hip and femoral diaphysis in UK Biobank MRI. The pipeline ran over two imaging batches comprising 50,226 participants; the batch figures shown are the 48,608 retained after sample quality control."
 image_source_label: "Xu et al., Nature Communications"
 image_source_url: "https://doi.org/10.1038/s41467-024-55422-4"
 image_position: "center"

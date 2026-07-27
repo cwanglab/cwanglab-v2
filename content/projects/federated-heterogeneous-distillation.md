@@ -2,7 +2,7 @@
 title: "Federated heterogeneous distillation"
 summary: "Collaborative learning across institutions and devices with different local model architectures."
 status: "Published"
-period: "2020"
+period: "2021"
 research_area: "Heterogeneous intelligence"
 order: 30
 featured: true

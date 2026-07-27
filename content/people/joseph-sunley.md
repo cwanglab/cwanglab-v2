@@ -1,7 +1,7 @@
 ---
 title: "Joseph Sunley"
 category: "alumni"
-_build:
+build:
   render: never
   list: local
 position: "BSc Computer Science (AI), 2024–2025"

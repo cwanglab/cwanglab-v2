@@ -1,7 +1,7 @@
 ---
 title: "Dylan Wintle"
 category: "alumni"
-_build:
+build:
   render: never
   list: local
 position: "BSc Computer Science, 2023–2024"

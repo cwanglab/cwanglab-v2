@@ -1,7 +1,7 @@
 ---
 title: "Agisilaos Chartsias"
 category: "doctoral-alumni"
-_build:
+build:
   render: never
   list: local
 position: "PhD Researcher, 2019–2020"

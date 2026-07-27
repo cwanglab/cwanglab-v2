@@ -1,7 +1,7 @@
 ---
 title: "Tian Xia"
 category: "doctoral-alumni"
-_build:
+build:
   render: never
   list: local
 position: "PhD Researcher, 2020–2021"

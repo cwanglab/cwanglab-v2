@@ -1,7 +1,7 @@
 ---
 title: "Malachy Hayward"
 category: "alumni"
-_build:
+build:
   render: never
   list: local
 position: "BSc Computer Science, 2024–2025"

@@ -1,7 +1,7 @@
 ---
 title: "Yann Schlosser"
 category: "alumni"
-_build:
+build:
   render: never
   list: local
 position: "MSc Artificial Intelligence, 2022–2023"

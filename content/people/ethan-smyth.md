@@ -1,7 +1,7 @@
 ---
 title: "Ethan Smyth"
 category: "alumni"
-_build:
+build:
   render: never
   list: local
 position: "BSc EPSRC Vacation Intern, 2023–2024"

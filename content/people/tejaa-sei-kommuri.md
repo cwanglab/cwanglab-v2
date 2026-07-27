@@ -1,7 +1,7 @@
 ---
 title: "Tejaa Sei Kommuri"
 category: "alumni"
-_build:
+build:
   render: never
   list: local
 position: "MSc Robotics, 2023–2024"

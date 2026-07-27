@@ -1,7 +1,7 @@
 ---
 title: "Kyle Mckay"
 category: "alumni"
-_build:
+build:
   render: never
   list: local
 position: "MSc Data Science, 2022–2023"

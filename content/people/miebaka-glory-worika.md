@@ -1,7 +1,7 @@
 ---
 title: "Miebaka Glory Worika"
 category: "alumni"
-_build:
+build:
   render: never
   list: local
 position: "MSc Artificial Intelligence, 2023–2024"

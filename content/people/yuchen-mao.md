@@ -1,7 +1,7 @@
 ---
 title: "Yuchen Mao"
 category: "alumni"
-_build:
+build:
   render: never
   list: local
 position: "Research Intern"

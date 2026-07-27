@@ -23,4 +23,4 @@ Our work combines federated learning, online knowledge distillation, cross-domai
 ## Representative work
 
 - [DiCyc: GAN-based deformation-invariant cross-domain information fusion for medical image synthesis](/publications/dicyc-2021/) (Information Fusion, 2021)
-- [Federated heterogeneous distillation for cloud–edge industrial cyber-physical systems](https://doi.org/10.1109/TII.2020.3007407) (IEEE Transactions on Industrial Informatics, 2020) · [project page](/projects/federated-heterogeneous-distillation/)
+- [Industrial cyber-physical systems-based cloud IoT edge for federated heterogeneous distillation](https://doi.org/10.1109/TII.2020.3007407) (IEEE Transactions on Industrial Informatics, 2021) · [project page](/projects/federated-heterogeneous-distillation/)

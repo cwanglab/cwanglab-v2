@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" width="560" height="420" role="img" aria-label="Whole-body MRI measurement and association pipeline">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 62 560 205" width="560" height="205" role="img" aria-label="Whole-body MRI measurement and association pipeline">
   <defs>
     <marker id="med-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 Z" fill="#7a1732"/>
     </marker>
   </defs>
-  <rect x="0" y="0" width="560" height="420" fill="#ffffff"/>
+  <rect x="0" y="62" width="560" height="205" fill="#ffffff"/>
 
   <!-- Step 1: Whole-body MRI -->
   <g>
@@ -67,6 +67,4 @@
   <line x1="131" y1="180" x2="147" y2="180" stroke="#7a1732" stroke-width="2" marker-end="url(#med-arrow)"/>
   <line x1="271" y1="180" x2="287" y2="180" stroke="#7a1732" stroke-width="2" marker-end="url(#med-arrow)"/>
   <line x1="411" y1="180" x2="427" y2="180" stroke="#7a1732" stroke-width="2" marker-end="url(#med-arrow)"/>
-
-  <!-- Source note -->
 </svg>
