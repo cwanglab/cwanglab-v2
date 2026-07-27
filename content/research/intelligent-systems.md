@@ -5,7 +5,7 @@ description: "Perception, planning and coordination for robots with different se
 order: 40
 diagram: "/images/diagrams/dir-robotics.svg"
 diagram_alt: "Overview of heterogeneous robotic systems: perception, planning and coordination across robots with different sensors, morphologies and capabilities."
-diagram_caption: "This direction at a glance: robots with different sensors, bodies and capabilities that still perceive, decide and act together."
+diagram_caption: "Schematic. This direction at a glance: robots with different sensors, bodies and capabilities that still perceive, decide and act together."
 image: "/images/research/soft-robot-sensorimotor.png"
 image_size: "wide"
 image_alt: "Bio-inspired tactile and morphological sensing pipeline for autonomous soft robotic fish and crawler systems."

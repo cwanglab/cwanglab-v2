@@ -5,7 +5,7 @@ description: "Federated learning and knowledge transfer across institutions, mod
 order: 10
 diagram: "/images/diagrams/dir-heterogeneous.svg"
 diagram_alt: "Overview of heterogeneous intelligence: federated learning and knowledge distillation across institutions, model architectures and devices."
-diagram_caption: "This direction at a glance: models learn across institutions, architectures and devices while source data stay under local governance."
+diagram_caption: "Schematic. This direction at a glance: models learn across institutions, architectures and devices while source data stay under local governance."
 ---
 
 Heterogeneous intelligence is the study of learning systems that must operate across differences rather than assuming a uniform dataset, model or device. Hospitals and research partners often cannot pool data and do not operate identical infrastructure. We study federated, distributed and knowledge-distillation methods that allow models to learn across these boundaries while keeping source data under local governance.

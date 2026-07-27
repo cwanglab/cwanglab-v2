@@ -9,4 +9,4 @@ external_url: "https://doi.org/10.1038/s41467-024-55422-4"
 draft: false
 ---
 
-The study uses our deep-learning pipeline to measure bone marrow adiposity in the femoral head, total hip, femoral diaphysis and spine from MRI scans of approximately 47,000 UK Biobank participants, and then establishes the heritability and genome-wide significant associations of these imaging phenotypes through GWAS meta-analyses.
+The study uses our deep-learning pipeline to measure bone marrow adiposity in the femoral head, total hip, femoral diaphysis and spine from the MRI of two UK Biobank imaging batches comprising 50,226 participants, and then establishes the heritability and genome-wide significant associations of these imaging phenotypes through GWAS meta-analyses, whose post-quality-control sample sizes vary by skeletal site.

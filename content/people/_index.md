@@ -1,5 +1,5 @@
 ---
 title: "People"
 description: "Researchers and academic collaborators in the Heterogeneous & Terminal Intelligence Lab."
-intro: "Only members and collaborators whose public details have been confirmed are listed. Beyond the people listed here, the group includes doctoral and master's researchers working across heterogeneous learning, trustworthy medical imaging and terminal intelligence; their individual profiles are published only after they have agreed to appear on this site."
+intro: "Doctoral researchers based at Heriot-Watt University and the University of Edinburgh, together with the academic collaborators the group works with most closely. Alumni lists the doctoral, master's, undergraduate and intern researchers who have completed projects with the group. Individual profiles and photographs are published with the person's consent; to amend or remove an entry, email Chengjia.Wang@hw.ac.uk."
 ---

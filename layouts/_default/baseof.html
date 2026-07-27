@@ -16,6 +16,7 @@
   <meta property="og:site_name" content="{{ .Site.Title }}">
   <meta property="og:locale" content="en_GB">
   <meta property="og:image" content="{{ .Site.BaseURL }}images/og-image.png">
+  <meta property="og:image:alt" content="{{ .Site.Title }}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ $pageTitle }}">
   <meta name="twitter:description" content="{{ $description }}">
@@ -195,7 +196,8 @@
     .footer-note { margin: 32px 0 0; padding-top: 18px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 12px; }
     .footer-note + .footer-note { margin-top: 10px; padding-top: 0; border-top: 0; }
 
-    @media (max-width: 920px) {
+    /* 1000px, not 920px: the seven-item nav clips between roughly 920 and 1000. */
+    @media (max-width: 1000px) {
       .site-nav { display: none; }
       .mobile-nav { display: block; position: relative; }
       .mobile-nav summary { cursor: pointer; color: var(--ink); font-size: 14px; font-weight: 700; list-style: none; }
@@ -333,6 +335,7 @@
       </div>
       <p class="footer-note">© 2026 {{ site.Data.site.name }}, <a href="https://www.hw.ac.uk/">Heriot-Watt University</a>. All rights reserved.</p>
       <p class="footer-note">Content is maintained as an academic record. Publication links should be checked against the publisher or DOI record.</p>
+      <p class="footer-note">People are listed with their consent. To amend or remove your entry, email <a href="mailto:{{ site.Data.site.email }}">{{ site.Data.site.email }}</a>.</p>
     </div>
   </footer>
 </body>

@@ -14,7 +14,7 @@ This leads to four connected directions. **Heterogeneous intelligence** studies 
 
 ## How we work
 
-The lab works in close collaboration with clinical and academic partners, including the University of Edinburgh's BHF Centre for Cardiovascular Science and Edinburgh Imaging, where the principal investigator holds an honorary fellowship. Much of our medical imaging work is conducted within governed data environments such as UK Biobank, and we aim to release code, preprints and project pages alongside our publications whenever agreements allow.
+The lab works in close collaboration with clinical and academic partners, including the University of Edinburgh's BHF Centre for Cardiovascular Science, where the principal investigator is an Honorary Research Fellow, and Edinburgh Imaging. Much of our medical imaging work is conducted within governed data environments such as UK Biobank, and we aim to release code, preprints and project pages alongside our publications whenever agreements allow.
 
 We also contribute to teaching and supervision within the School of Mathematical and Computer Sciences and the National Robotarium, training students in machine learning, medical image computing and robotics. Prospective doctoral researchers can find current routes to join the group on the [opportunities page](/opportunities/).
 

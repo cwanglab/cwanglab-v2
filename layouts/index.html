@@ -5,6 +5,12 @@
     .home-intro { padding: 44px 0 8px; }
     .home-intro p { max-width: var(--measure); margin: 0 0 16px; font-size: 19px; }
     .home-intro .kicker { margin-bottom: 12px; }
+    .home-intro h1 {
+      max-width: var(--measure); margin: 0 0 18px;
+      font-family: var(--serif); font-size: 40px; font-weight: 700; line-height: 1.15;
+    }
+    .home-intro .home-lead { font-size: 21px; line-height: 1.55; }
+    .home-links { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 22px 0 0; padding: 0; list-style: none; font-size: 16px; font-weight: 700; }
 
     .home-section { padding: 34px 0 6px; }
     .home-section h2 { margin: 0 0 14px; padding-top: 26px; border-top: 1px solid var(--rule); font-family: var(--serif); font-size: 26px; line-height: 1.25; }
@@ -42,9 +48,16 @@
   <section class="home-intro">
     <div class="shell">
       <p class="kicker">{{ site.Data.site.school }}, {{ site.Data.site.institution }}</p>
-      <p>We are a research group at {{ site.Data.site.institution }} in Edinburgh, based at the National Robotarium. We build AI for medical imaging and robotics that works across hospitals, devices and datasets: models that excel in one setting often fail at the next scanner, hospital or robot, and we develop learning methods that carry capability across those differences — onto the clinical and robotic terminals where AI is actually used.</p>
-      <p>Recent work includes two Nature Communications studies measuring bone marrow adiposity across roughly 47,000 UK Biobank participants, and SeLoRA, an open-source method for adapting large image-synthesis models to specialised medical tasks.</p>
+      <h1>{{ site.Data.site.name }}</h1>
+      <p class="home-lead">We build AI for medical imaging and robotics that works across hospitals, devices and datasets. Models that excel in one setting often fail at the next scanner, hospital or robot; we develop learning methods that carry capability across those differences — onto the clinical and robotic terminals where AI is actually used.</p>
+      <p>The group is based at the National Robotarium in Edinburgh. Recent work includes two Nature Communications studies measuring bone marrow adiposity in 50,226 UK Biobank participants, and SeLoRA, an open-source method for adapting large image-synthesis models to specialised medical tasks.</p>
       <p>The group is led by <a href="{{ relURL "/people/" }}">{{ site.Data.site.principal_investigator }}</a>, {{ site.Data.site.pi_position }}. Contact: <a href="mailto:{{ site.Data.site.email }}">{{ site.Data.site.email }}</a>.</p>
+      <ul class="home-links">
+        <li><a href="{{ relURL "/research/" }}">Research directions</a></li>
+        <li><a href="{{ relURL "/publications/" }}">Publications</a></li>
+        <li><a href="{{ relURL "/projects/" }}">Projects &amp; code</a></li>
+        <li><a href="{{ relURL "/opportunities/" }}">Join the group</a></li>
+      </ul>
     </div>
   </section>
 
@@ -71,10 +84,10 @@
     "intelligent-systems" (dict "label" "Image-guided path planning for coronary intervention, Computers in Biology and Medicine 2023" "url" "/publications/pci-path-planning-2023/")
   }}
   {{ $dirFig := dict
-    "heterogeneous-learning" (dict "src" "/images/diagrams/dir-heterogeneous.svg" "alt" "Diagram: heterogeneous intelligence across institutions, architectures and devices")
-    "efficient-models" (dict "src" "/images/diagrams/dir-terminal.svg" "alt" "Diagram: terminal intelligence on scanners, surgical systems and robots")
-    "medical-imaging" (dict "src" "/images/diagrams/dir-medical-ai.svg" "alt" "Diagram: trustworthy medical AI")
-    "intelligent-systems" (dict "src" "/images/diagrams/dir-robotics.svg" "alt" "Diagram: heterogeneous robotic systems")
+    "heterogeneous-learning" (dict "src" "/images/diagrams/dir-heterogeneous.svg" "alt" "Schematic: heterogeneous intelligence across institutions, architectures and devices")
+    "efficient-models" (dict "src" "/images/diagrams/dir-terminal.svg" "alt" "Schematic: terminal intelligence on scanners, surgical systems and robots")
+    "medical-imaging" (dict "src" "/images/diagrams/dir-medical-ai.svg" "alt" "Schematic: trustworthy medical AI")
+    "intelligent-systems" (dict "src" "/images/diagrams/dir-robotics.svg" "alt" "Schematic: heterogeneous robotic systems")
   }}
   <section class="home-section" aria-labelledby="directions-title">
     <div class="shell">
@@ -113,12 +126,32 @@
           {{- with .Params.scholar }} · <a href="{{ . }}">Google Scholar</a>{{ end }}
         </p>
       {{ end }}
+      {{/* Current members only. Alumni are listed on the People page, not here. */}}
+      {{ $current := where $people ".Params.category" "in" (slice "research-staff" "postdoctoral-researcher" "phd-researcher" "academic-collaborator") }}
       <ul>
-        {{ range (where $people ".Params.category" "ne" "principal-investigator").ByParam "order" }}
+        {{ range $current.ByParam "order" }}
           <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>, {{ .Params.position }}.</li>
         {{ end }}
       </ul>
-      <p class="home-more"><a href="{{ relURL "/people/" }}">Full team list</a></p>
+      <p class="home-more"><a href="{{ relURL "/people/" }}">Full team list, including alumni</a></p>
+    </div>
+  </section>
+
+  {{ $projects := where (where site.RegularPages "Section" "projects") ".Params.featured" true }}
+  <section class="home-section" aria-labelledby="projects-title">
+    <div class="shell">
+      <h2 id="projects-title">Projects &amp; code</h2>
+      <ul>
+        {{ range $projects.ByParam "order" }}
+          <li>
+            <a href="{{ .RelPermalink }}"><strong>{{ .Title }}</strong></a> — {{ .Params.summary }}
+            {{ with .Params.doi }}<a href="{{ . }}">DOI</a>{{ end }}
+            {{ with .Params.code }}· <a href="{{ . }}">Code</a>{{ end }}
+            {{ with .Params.arxiv }}· <a href="{{ . }}">arXiv</a>{{ end }}
+          </li>
+        {{ end }}
+      </ul>
+      <p class="home-more"><a href="{{ relURL "/projects/" }}">All projects and released code</a></p>
     </div>
   </section>
 

@@ -5,7 +5,7 @@ description: "Parameter-efficient adaptation and compression that puts large-mod
 order: 20
 diagram: "/images/diagrams/dir-terminal.svg"
 diagram_alt: "Overview of terminal intelligence: parameter-efficient adaptation and compression that bring large-model capability to fixed clinical and robotic terminals."
-diagram_caption: "This direction at a glance: large-model capability, adapted and compressed to run on real clinical and robotic terminals."
+diagram_caption: "Schematic. This direction at a glance: large-model capability, adapted and compressed to run on real clinical and robotic terminals."
 ---
 
 Terminal intelligence concerns the point at which a model must sense, decide or assist in the real world. Large models are useful research tools, but many clinical and robotic terminals operate on fixed hardware and within strict response times. We investigate parameter-efficient adaptation, model compression and data-efficient learning so that capability can be transferred from large training environments to practical endpoints.
