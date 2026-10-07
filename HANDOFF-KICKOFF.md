@@ -5,9 +5,17 @@ inside a fresh or updated clone of this repo. It is self-contained: nothing in
 it depends on another machine's ~/.claude session archive.
 
 ----8<----
-cd 到 cwanglab-v2 仓库，先执行 `git pull origin main`，确认 `git log -1` 显示
-5aa594a 或更新。然后按顺序读 HANDOFF.md、../CLAUDE.md（如果 Group/ 目录存在）、
-DESIGN_AUDIT_2026-07.md 的 P3 表和 "Not to be done" 节、CONSENT_EMAIL.md。
+如果这台机器还没有这些仓库，先按 REPOS.md 的布局克隆全部四个（私有仓库
+group-knowledge 作为父目录 Group/，另外三个克隆在它里面）：
+  git clone git@github.com:cwanglab/group-knowledge.git Group && cd Group
+  git clone git@github.com:cwanglab/cwanglab-v2.git
+  git clone git@github.com:cwanglab/cwanglab.github.io.git
+  git clone git@github.com:cwanglab/group-ops.git
+已有则在每个仓库里 `git pull origin main`。
+
+cd 到 Group/cwanglab-v2，确认 `git log -1` 显示 5aa594a 或更新。然后按顺序读
+HANDOFF.md、../REPOS.md、../claude.md、DESIGN_AUDIT_2026-07.md 的 P3 表和
+"Not to be done" 节、CONSENT_EMAIL.md。事实来源是 ../CV/c_cv2.tex 和 ../CV/citations.bib。
 
 规则：
 - 任何事实只以 CV/c_cv2.tex、citations.bib 和 DOI 为准，不以网站本身或记忆为准。
@@ -25,5 +33,5 @@ DESIGN_AUDIT_2026-07.md 的 P3 表和 "Not to be done" 节、CONSENT_EMAIL.md。
 - `git pull` carries the work and HANDOFF.md; the GitHub remote is the only shared store.
 - `~/.claude/projects/` session archives are per-machine. `claude --resume <id>` from
   this machine's session will NOT work on another machine.
-- `.claude/` and `../CLAUDE.md` are not in this repo; HANDOFF.md restates the binding rules
-  so the other machine does not depend on them.
+- `../claude.md`, `../CV/` and `../REPOS.md` live in the private parent repo
+  `cwanglab/group-knowledge`; clone it as the parent directory and everything lines up.
